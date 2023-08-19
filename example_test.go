@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/graph-gophers/graphql-go"
+	"github.com/followthepattern/graphql-go"
 )
 
 type exampleResolver struct{}

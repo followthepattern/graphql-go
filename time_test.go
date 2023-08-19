@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/graph-gophers/graphql-go"
-	"github.com/graph-gophers/graphql-go/decode"
+	"github.com/followthepattern/graphql-go"
+	"github.com/followthepattern/graphql-go/decode"
 )
 
 func TestTime_ImplementsUnmarshaler(t *testing.T) {

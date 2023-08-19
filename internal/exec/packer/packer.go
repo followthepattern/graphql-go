@@ -5,11 +5,12 @@ import (
 	"math"
 	"reflect"
 	"strings"
+	"time"
 
-	"github.com/graph-gophers/graphql-go/ast"
-	"github.com/graph-gophers/graphql-go/decode"
-	"github.com/graph-gophers/graphql-go/directives"
-	"github.com/graph-gophers/graphql-go/errors"
+	"github.com/followthepattern/graphql-go/ast"
+	"github.com/followthepattern/graphql-go/decode"
+	"github.com/followthepattern/graphql-go/directives"
+	"github.com/followthepattern/graphql-go/errors"
 )
 
 type packer interface {
@@ -377,6 +378,13 @@ func unmarshalInput(typ reflect.Type, input interface{}) (interface{}, error) {
 	case reflect.String:
 		if reflect.TypeOf(input).ConvertibleTo(typ) {
 			return reflect.ValueOf(input).Convert(typ).Interface(), nil
+		}
+	case reflect.Struct:
+		if typ == reflect.TypeOf(time.Time{}) {
+			switch input := input.(type) {
+			case string:
+				return time.Parse(time.RFC3339, input)
+			}
 		}
 	}
 

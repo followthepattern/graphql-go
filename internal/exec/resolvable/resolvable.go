@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
-	"github.com/graph-gophers/graphql-go/ast"
-	"github.com/graph-gophers/graphql-go/decode"
-	"github.com/graph-gophers/graphql-go/directives"
-	"github.com/graph-gophers/graphql-go/internal/exec/packer"
+	"github.com/followthepattern/graphql-go/ast"
+	"github.com/followthepattern/graphql-go/decode"
+	"github.com/followthepattern/graphql-go/directives"
+	"github.com/followthepattern/graphql-go/internal/exec/packer"
 )
 
 const (
@@ -431,6 +432,8 @@ func makeScalarExec(t *ast.ScalarTypeDefinition, resolverType reflect.Type) (Res
 		implementsType = t.Name == "String"
 	case *bool:
 		implementsType = t.Name == "Boolean"
+	case *time.Time:
+		implementsType = t.Name == "Time"
 	case decode.Unmarshaler:
 		implementsType = r.ImplementsGraphQLType(t.Name)
 	}

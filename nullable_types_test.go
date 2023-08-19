@@ -4,8 +4,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/graph-gophers/graphql-go"
-	"github.com/graph-gophers/graphql-go/decode"
+	"github.com/followthepattern/graphql-go"
+	"github.com/followthepattern/graphql-go/decode"
 )
 
 func TestNullInt_ImplementsUnmarshaler(t *testing.T) {

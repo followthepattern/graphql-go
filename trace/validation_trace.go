@@ -1,8 +1,8 @@
 package trace
 
 import (
-	"github.com/graph-gophers/graphql-go/errors"
-	"github.com/graph-gophers/graphql-go/trace/tracer"
+	"github.com/followthepattern/graphql-go/errors"
+	"github.com/followthepattern/graphql-go/trace/tracer"
 )
 
 // Deprecated: this type has been deprecated. Use tracer.ValidationFinishFunc instead.
