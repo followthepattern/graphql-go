@@ -263,10 +263,9 @@ func (b *execBuilder) makeExec(t ast.Type, resolverType reflect.Type) (Resolvabl
 	}
 
 	if !nonNull {
-		if resolverType.Kind() != reflect.Ptr {
-			return nil, fmt.Errorf("%s is not a pointer", resolverType)
+		if resolverType.Kind() == reflect.Ptr {
+			resolverType = resolverType.Elem()
 		}
-		resolverType = resolverType.Elem()
 	}
 
 	switch t := t.(type) {
